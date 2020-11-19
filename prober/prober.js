@@ -1,4 +1,4 @@
-const config = require('../config/config');
+const config = require('../config');
 const probeConfig = require(config.probeConfigFile);
 const newman = require('newman');
 const promClient = require('prom-client');

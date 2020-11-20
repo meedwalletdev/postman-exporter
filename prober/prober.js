@@ -93,7 +93,7 @@ class Prober {
             name: NAME_PREFIX + 'assertion_failure',
             help: 'Returns assertion failures',
             registers: [this.probeRegistry],
-            labelNames: ['iteration', 'position', 'request_name', 'assertion']
+            labelNames: ['iteration', 'position', 'request_name', 'request_host', 'assertion']
           });
           for (const [key, execution] of Object.entries(summary.run.executions)) {
             for (const [key2, assertion] of Object.entries(execution.assertions)) {
@@ -102,6 +102,7 @@ class Prober {
                   'iteration': execution.cursor.iteration,
                   'position': execution.cursor.position,
                   'request_name': execution.item.name,
+                  'request_host': execution.item.request.url.host.join('.'),
                   'assertion': assertion.assertion
                 }, 
                 assertion.error !== undefined ? 1 : 0
